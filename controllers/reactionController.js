@@ -8,11 +8,6 @@ module.exports = {
             { $addToSet: { reactions: req.body } },
             { new: true, runValidators: true }
         )
-            // .populate({
-            //     path: 'reactions',
-            //     select: '-__v'
-            // })
-            // .select('-__v')
             .then((thought) => 
             !thought
             ?res.status(404).json({ message: "No thought has been found with this id but a reaction has been created."})
@@ -31,10 +26,6 @@ module.exports = {
                 !thought
                 ?res.status(404).json({ message: "Reaction has been deleted but there was no thought found."})
                 :res.json({ message: "Your reaction has been deleted!"})
-                // if (!dbThoughtData) {
-                //     res.status(404).json({ message: 'No thought with this id!' });
-                //     return;
-                // }
             })
             .catch(err => res.json(err));
     }
