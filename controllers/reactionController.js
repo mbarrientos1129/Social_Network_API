@@ -3,8 +3,8 @@ const { Thought } = require('../models')
 module.exports = {
     //Post reaction
     addReaction(req, res) {
-        Reaction.findOneAndUpdate(
-            { _id: params.thoughtId },
+        Thought.findOneAndUpdate(
+            { _id: req.params.thoughtId },
             { $addToSet: { reactions: req.body } },
             { new: true, runValidators: true }
         )
