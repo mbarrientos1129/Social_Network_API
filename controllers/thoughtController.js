@@ -8,7 +8,7 @@ module.exports = {
             .catch((err) => res.status(500).json(err));
     },
     // Get a thought
-    getSingleTHought(req, res) {
+    getSingleThought(req, res) {
         Thought.findOne({ _id: params.thoughtId })
             .select('-__v')
             .then((thought) =>

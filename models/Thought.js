@@ -22,17 +22,16 @@ const thoughtSchema = new Schema(
         },
 
         reactions: [reactionSchema],
-
+    },
+    {
         toJSON: {
-            virtuals: true,
-            getters: true,
+           getters: true
         },
-        id: false,
     }
 );
 
 // Create a virtual property `reactionCount` that gets and sets the user's full name
-userSchema
+thoughtSchema
     .virtual('reactionCount')
     .get(function () {
         return this.reactions.length;

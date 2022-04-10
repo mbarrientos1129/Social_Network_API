@@ -1,8 +1,9 @@
-const { Schema, model } = require('mongoose');
+const { Schema, Types } = require('mongoose');
+const moment = require('moment');
 
 const reactionSchema = new Schema(
     {
-        thoughtText: {
+        reactionId: {
             type: Schema.Types.ObjectId,
             default: () => new Types.ObjectId(),
         },
@@ -20,13 +21,12 @@ const reactionSchema = new Schema(
             default: Date.now,
             get: (createdAtVal) => moment(createdAtVal).format('MMM DD, YYYY [at] hh:mm a')
         },
-        toJSON: {
-            getters: true,
-        },
+        
+        id: false,
     }
 );
 
 // Initialize our User model
-const Reaction = model('reaction', reactionSchema);
+// const Reaction = model('reaction', reactionSchema);
 
-module.exports = Reaction;
+module.exports = reactionSchema;

@@ -8,10 +8,10 @@ module.exports = {
             { $addToSet: { reactions: req.body } },
             { new: true, runValidators: true }
         )
-            .then((thought) => 
-            !thought
-            ?res.status(404).json({ message: "No thought has been found with this id but a reaction has been created."})
-            :res.json(thought)
+            .then((thought) =>
+                !thought
+                    ? res.status(404).json({ message: "No thought has been found with this id but a reaction has been created." })
+                    : res.json(thought)
             )
             .catch(err => res.json(err));
     },
@@ -24,8 +24,8 @@ module.exports = {
         )
             .then((thought) => {
                 !thought
-                ?res.status(404).json({ message: "Reaction has been deleted but there was no thought found."})
-                :res.json({ message: "Your reaction has been deleted!"})
+                    ? res.status(404).json({ message: "Reaction has been deleted but there was no thought found." })
+                    : res.json({ message: "Your reaction has been deleted!" })
             })
             .catch(err => res.json(err));
     }
