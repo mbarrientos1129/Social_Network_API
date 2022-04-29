@@ -63,8 +63,8 @@ module.exports = {
     //Add a friend
     addFriend({ params }, res) {
         User.findOneAndUpdate(
-            { _id: req.params.userId },
-            { $addToSet: { friends: req.params.friendId } },
+            { _id: params.userId },
+            { $addToSet: { friends: params.friendId } },
             { new: true }
         )
             .then((user) =>
@@ -78,7 +78,7 @@ module.exports = {
     deleteFriend({ params }, res) {
         User.findOneAndUpdate(
             { _id: params.userId },
-            { $pull: { friends: req.params.friendId } },
+            { $pull: { friends: params.friendId } },
             { new: true }
         )
             .then((user) =>
